@@ -14,17 +14,14 @@ Activate the environment.
 conda activate dsa
 ```
 
-For statement 2, we will be using `en_core_web_sm` from spaCy.
+Download `en_core_web_sm` from spaCy. It will be used in Problem 2.
 ```bash
 python -m spacy download en_core_web_sm
 ```
 
 Install notebook and ipywidgets with conda.
 ```bash
-conda install notebook
-```
-```bash
-conda install ipywidgets
+conda install notebook ipywidgets
 ```
 
 Launch Jupyter notebook.
@@ -36,17 +33,17 @@ jupyter notebook
 ## 🔍 Analysis
 
 The analysis are done in the following notebooks:
-- Statement 1: [1-yields](./1-yields.ipynb)
-- Statement 2: [2-feedback](./2-feedback.ipynb)
+- Problem 1: [1-yields](./1-yields.ipynb)
+- Problem 2: [2-feedback](./2-feedback.ipynb)
 
 
-Processed data will be be stored in [`data/`](./data/) while results can be found in [`results/`](./results/)
+Data generated in the notebooks will be be stored in [`results/`](./results/).
 
 
 
 ## 💻 App
 
-We use Streamlit as the tool for visualisation for Statement 2
+For Problem 2, we use Streamlit as the tool for visualisation.
 ```bash
 streamlit run app.py
 ```

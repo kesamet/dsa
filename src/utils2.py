@@ -14,7 +14,7 @@ from nltk.corpus import stopwords
 STOPWORDS = stopwords.words("english")
 
 NLP = spacy.load("en_core_web_sm", disable=["parser", "ner"])
-POS_TAGS=["NOUN", "ADJ", "VERB", "ADV"]
+POS_TAGS = ["NOUN", "ADJ", "VERB", "ADV"]
 
 
 def save_json(data: dict, filename: str) -> None:
@@ -68,7 +68,7 @@ def sent_to_words(sentences: List[str]):
 
 
 def remove_stopwords(texts: List[List[str]]) -> List[List[str]]:
-    """Given a bigram model and a list of texts, return a list of lists of bigrams. """
+    """Given a bigram model and a list of texts, return a list of lists of bigrams."""
     return [[word for word in doc if word not in STOPWORDS] for doc in texts]
 
 

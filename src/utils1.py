@@ -5,7 +5,11 @@ import logging
 
 import pandas as pd
 import seaborn as sns
-from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+from sklearn.metrics import (
+    mean_absolute_error,
+    mean_absolute_percentage_error,
+    r2_score,
+)
 
 logging.basicConfig(level=logging.INFO)
 sns.set()
@@ -101,23 +105,21 @@ def load_econs() -> pd.DataFrame:
     return df
 
 
-def evaluate(data: pd.DataFrame, x: str = "y", y: str = "yhat") -> None:
+def evaluate(data: pd.DataFrame) -> None:
     """
     Evaluates the model performance on the given data.
 
     Args:
         data (pd.DataFrame): The data to evaluate the model on.
-        x (str): The name of the column containing the true values.
-        y (str): The name of the column containing the predicted values.
     """
-    y_true = data[x].values
-    y_pred = data[y].values
+    y_true = data["y"].values
+    y_pred = data["yhat"].values
 
     mae = mean_absolute_error(y_true, y_pred)
-    mse = mean_squared_error(y_true, y_pred)
+    mape = mean_absolute_percentage_error(y_true, y_pred)
     r2 = r2_score(y_true, y_pred)
     print(f"MAE = {mae:.4f}")
-    print(f"MSE = {mse:.4f}")
+    print(f"MAPE = {mape:.4f}")
     print(f"R2 = {r2:.4f}")
 
-    _ = sns.jointplot(x=x, y=y, data=data, kind="reg", color="0.4")
+    _ = sns.jointplot(x="y", y="yhat", data=data, kind="reg", color="0.4")
