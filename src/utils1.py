@@ -1,5 +1,5 @@
 """
-Utility functions for statement 1
+Utility functions for problem 1
 """
 import logging
 
@@ -14,7 +14,7 @@ from sklearn.metrics import (
 logging.basicConfig(level=logging.INFO)
 sns.set()
 
-filename = "./DAE002/DS1-assessment-RMD UST Yield Data.xlsx"
+FILENAME = "./DAE002/DS1-assessment-RMD UST Yield Data.xlsx"
 
 
 def load_yields() -> pd.DataFrame:
@@ -25,7 +25,7 @@ def load_yields() -> pd.DataFrame:
     """
     sheet_name = "DGS10"
     df = pd.read_excel(
-        filename,
+        FILENAME,
         sheet_name=sheet_name,
         index_col="observation_date",
         parse_dates=True,
@@ -48,7 +48,7 @@ def load_yields() -> pd.DataFrame:
     ]
     for sheet_name in sheet_names:
         _df = pd.read_excel(
-            filename,
+            FILENAME,
             sheet_name=sheet_name,
             index_col="observation_date",
             parse_dates=True,
@@ -68,7 +68,7 @@ def load_econs() -> pd.DataFrame:
     """
     sheet_name = "Initial Claims (ICSA)"  # weekly
     df = pd.read_excel(
-        filename,
+        FILENAME,
         sheet_name=sheet_name,
         index_col="observation_date",
         parse_dates=True,
@@ -93,7 +93,7 @@ def load_econs() -> pd.DataFrame:
 
     for sheet_name in sheet_names:
         _df = pd.read_excel(
-            filename,
+            FILENAME,
             sheet_name=sheet_name,
             index_col="observation_date",
             parse_dates=True,
