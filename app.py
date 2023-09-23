@@ -10,6 +10,8 @@ from streamlit import components
 
 st.set_page_config(layout="wide")
 
+RESULTS_DIR = "./results"
+
 
 @st.cache_data
 def load_csv(filename):
@@ -32,12 +34,12 @@ def load_html(filename):
 def main():
     st.sidebar.title("Topic Modelling")
 
-    df = load_csv("./results/employee_feedback.csv")
-    topics_keywords = load_json("./results/topics_keywords.json")
+    df = load_csv(f"{RESULTS_DIR}/employee_feedback.csv")
+    topics_keywords = load_json(f"{RESULTS_DIR}/topics_keywords.json")
     df["topic"] = df["topic"].astype(str)
     topics = sorted(list(set(df["topic"])))
 
-    html_string = load_html("./results/pyldavis_vis.html")
+    html_string = load_html(f"{RESULTS_DIR}/pyldavis_vis.html")
 
     st.write("#### Topics by LDA")
     components.v1.html(html_string, width=1300, height=900, scrolling=True)

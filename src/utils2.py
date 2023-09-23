@@ -24,7 +24,7 @@ STOPWORDS = stopwords.words("english")
 NLP = spacy.load("en_core_web_sm")
 POS_TAGS = None
 
-FILENAME = "DAE002/DS2-assessment-simulated-employee-text.xlsx"
+FILENAME = "./DAE002/DS2-assessment-simulated-employee-text.xlsx"
 
 
 def load_data() -> pd.DataFrame:
